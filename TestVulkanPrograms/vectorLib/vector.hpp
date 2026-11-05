@@ -1,4 +1,4 @@
-#include <math.h>
+#pragma once
 class Vector2D{
     private:
         double x;
@@ -8,15 +8,19 @@ class Vector2D{
     
     Vector2D(double x, double y);
 
-    [[no_discard]] Vector2D operator+(const Vector2D& other) const;
+    [[nodiscard]] Vector2D operator+(const Vector2D& other) const;
 
-    [[no_discard]] Vector2D operator-(const Vector2D& other) const;
+    [[nodiscard]] Vector2D operator-(const Vector2D& other) const;
 
-    [[no_discard]] Vector2D operator*(const Vector2D& other) const;
+    [[nodiscard]] Vector2D operator*(const Vector2D& other) const;
 
-    [[no_discard]] Vector2D operator*(double Scalar) const;
+    [[nodiscard]] Vector2D operator*(double Scalar) const;
 
-    [[no_discard]] Vector2D operator/(const Vector2D& other) const;
+    [[nodiscard]] Vector2D operator/(const Vector2D& other) const;
 
-    Vector2D normalize(const Vector2D& obj);
-}
+    Vector2D normalize() const;
+
+    double getX() const;
+
+    double getY() const;
+};

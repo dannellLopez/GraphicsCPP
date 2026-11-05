@@ -1,35 +1,36 @@
-
-#pragma once
 #include <math.h>
+#include "vector.hpp"
 
-class Vector2D{
-    private:
-        double x;
-        double y;
+//TODO handle div by 0 cases for normalize, and div
 
-    public:
 
-    Vector2D(double x, double y) : x(x), y(y) {}
+Vector2D::Vector2D(double x, double y) : x(x), y(y) {}
 
-    [[no_discard]] Vector2D operator+(const Vector2D& other) const{
-        return Vector2D(x + other.x, y + other.y);
-    }
+[[nodiscard]] Vector2D Vector2D::operator+(const Vector2D& other) const{
+    return Vector2D(x + other.x, y + other.y);
+}
 
-    [[no_discard]] Vector2D operator-(const Vector2D& other) const{
-        return Vector2D(other.x - x, other.y - y);
-    }
+[[nodiscard]] Vector2D Vector2D::operator-(const Vector2D& other) const{
+    return Vector2D(x - other.x, y - other.y);
+}
 
-    [[no_discard]] Vector2D operator/(const Vector2D& other) const{
-        return Vector2D(other.x / x, other.y / y);
-    }
+[[nodiscard]] Vector2D Vector2D::operator/(const Vector2D& other) const{
+    return Vector2D(other.x / x, other.y / y);
+}
 
-    [[no_discard]] Vector2D operator*(const Vector2D& other) const{
-        return Vector2D(other.x * x, other.y * y);
-    }
+[[nodiscard]] Vector2D Vector2D::operator*(const Vector2D& other) const{
+    return Vector2D(other.x * x, other.y * y);
+}
 
-    Vector2D normalize(const Vector2D& obj){
-        double dist = pow(pow(obj.x, 2) + pow(obj.y, 2), 1/2);
-        return Vector2D(obj.x/dist, obj.y/dist);
-    }
-    
-};
+Vector2D Vector2D::normalize() const{
+    double dist = pow(pow(x, 2) + pow(y, 2), 0.5);
+    return Vector2D(x/dist, y/dist);
+}
+
+double Vector2D::getX() const{
+    return x;
+}
+
+double Vector2D::getY() const{
+    return y;
+}
